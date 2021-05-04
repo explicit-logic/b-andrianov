@@ -12,7 +12,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const portfolioTemplate = require.resolve(`./src/templates/Portfolio.js`);
+  const portfolioProjectTemplate = require.resolve(`./src/templates/PortfolioProject.js`);
   const portfolioTagTemplate = require.resolve('./src/templates/PortfolioTag.js');
 
   return graphql(`
@@ -41,7 +41,7 @@ exports.createPages = ({ actions, graphql }) => {
     result.data.items.edges.forEach(({ node }) => {
       createPage({
         path: `/portfolio/${node.frontmatter.slug}`,
-        component: portfolioTemplate,
+        component: portfolioProjectTemplate,
         context: {
           // additional data can be passed via context
           slug: node.frontmatter.slug,
